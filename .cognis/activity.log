@@ -1,1 +1,2 @@
 2024-06-18T17:13:23  docs(engine): cover the multiline case
+2024-06-26T12:30:30  style(scan): reduce false positives on edge cases
