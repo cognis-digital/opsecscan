@@ -2,3 +2,4 @@
 2024-06-26T12:30:30  style(scan): reduce false positives on edge cases
 2024-07-23T19:47:37  ci(scoring): respect .gitignore when walking
 2024-08-02T14:04:44  docs(output): bump the dev toolchain
+2024-08-29T09:21:51  refactor(ci): handle empty and malformed input
