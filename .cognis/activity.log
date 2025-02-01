@@ -11,3 +11,4 @@
 2024-12-17T15:03:33  fix: works on my machine (TM)
 2024-12-26T10:20:40  chore(docs): document the config keys
 2025-01-22T17:37:47  docs(scan): add a dry-run flag
+2025-02-01T12:54:54  docs: ELI5 pass
