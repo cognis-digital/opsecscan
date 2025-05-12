@@ -16,3 +16,4 @@
 2025-03-10T14:28:08  feat(ci): add pagination to large reports
 2025-04-06T09:45:15  refactor(core): respect .gitignore when walking
 2025-04-15T16:02:22  refactor: I have altered the code. pray I don't alter it further
+2025-05-12T11:19:29  feat(mcp): handle empty and malformed input
