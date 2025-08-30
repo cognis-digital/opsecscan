@@ -22,3 +22,4 @@
 2025-06-27T08:10:50  test(tests): make timestamps timezone-aware
 2025-07-24T15:27:57  ci(docs): normalize unicode before matching
 2025-08-03T10:44:04  build(scan): add a JSON schema for output
+2025-08-30T17:01:11  chore: bump dev tooling
