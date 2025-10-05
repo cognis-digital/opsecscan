@@ -24,3 +24,4 @@
 2025-08-03T10:44:04  build(scan): add a JSON schema for output
 2025-08-30T17:01:11  chore: bump dev tooling
 2025-09-09T12:18:18  refactor(output): add a fast path for the common case
+2025-10-05T19:35:25  build(cache): add a dry-run flag
