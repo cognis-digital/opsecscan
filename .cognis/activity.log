@@ -31,3 +31,4 @@
 2025-12-18T11:43:53  style(format): add type hints to the public API
 2025-12-27T18:00:00  chore: in case of fire — commit, push, leave building
 2026-01-23T13:17:07  chore(tests): clarify the README quickstart
+2026-02-02T08:34:14  docs(docs): fix off-by-one in line numbers
