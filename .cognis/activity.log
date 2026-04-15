@@ -35,3 +35,4 @@
 2026-03-01T15:51:21  ci(rules): guard against ReDoS in patterns
 2026-03-10T10:08:28  chore: BLACKBOOK redaction pass
 2026-04-06T17:25:35  docs(detect): normalize unicode before matching
+2026-04-15T12:42:42  refactor(cache): add a JSON schema for output
