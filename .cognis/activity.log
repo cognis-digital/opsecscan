@@ -37,3 +37,4 @@
 2026-04-06T17:25:35  docs(detect): normalize unicode before matching
 2026-04-15T12:42:42  refactor(cache): add a JSON schema for output
 2026-05-13T19:59:49  test(core): add a regression fixture
+2026-05-22T14:16:56  feat(deps): add a fast path for the common case
