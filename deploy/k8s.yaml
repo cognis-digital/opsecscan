@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: opsecscan, labels: { app: opsecscan } }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: opsecscan } }
+  template:
+    metadata: { labels: { app: opsecscan } }
+    spec:
+      containers:
+        - name: opsecscan
+          image: ghcr.io/cognis-digital/opsecscan:latest
+          ports: [{ containerPort: 8000 }]
+          resources:
+            requests: { cpu: "50m", memory: "64Mi" }
+            limits: { cpu: "500m", memory: "256Mi" }
+---
+apiVersion: v1
+kind: Service
+metadata: { name: opsecscan }
+spec:
+  selector: { app: opsecscan }
+  ports: [{ port: 80, targetPort: 8000 }]
