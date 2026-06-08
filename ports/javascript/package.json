@@ -1,0 +1,10 @@
+{
+  "name": "@cognis/opsecscan",
+  "version": "0.2.0",
+  "description": "JavaScript port of opsecscan (Cognis Neural Suite)",
+  "bin": {
+    "opsecscan": "index.js"
+  },
+  "license": "LicenseRef-COCL-1.0",
+  "type": "module"
+}
