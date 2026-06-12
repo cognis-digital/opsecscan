@@ -16,7 +16,7 @@
 </div>
 
 ```bash
-pip install cognis-opsecscan
+pip install "git+https://github.com/cognis-digital/opsecscan.git"
 opsecscan scan .            # → prioritized findings in seconds
 ```
 
@@ -48,7 +48,7 @@ Scan documents and file metadata for OPSEC leaks: geotags, author, GPS EXIF, uni
 ## Quick start
 
 ```bash
-pip install cognis-opsecscan
+pip install "git+https://github.com/cognis-digital/opsecscan.git"
 opsecscan --version
 opsecscan scan .                       # scan current project
 opsecscan scan . --format json         # machine-readable
