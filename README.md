@@ -20,6 +20,12 @@ pip install "git+https://github.com/cognis-digital/opsecscan.git"
 opsecscan scan .            # → prioritized findings in seconds
 ```
 
+<!-- cognis:layman:start -->
+## What is this?
+
+OPSECSCAN is a command-line tool that checks your documents and images for sensitive information that could accidentally expose private details. Point it at any file or folder and it will flag things like GPS location data embedded in photos, author names in Word or PDF documents, military unit identifiers, and personal ID numbers — the kind of metadata that often gets overlooked before sharing a file publicly. It works on Windows, Mac, and Linux with a single command and no account or internet connection required. Security researchers, journalists, and anyone who regularly shares documents will find it useful for catching leaks before they become problems.
+<!-- cognis:layman:end -->
+
 ## Contents
 
 - [Why opsecscan?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
@@ -45,6 +51,42 @@ Scan documents and file metadata for OPSEC leaks: geotags, author, GPS EXIF, uni
 <div align="right"><a href="#top">↑ back to top</a></div>
 
 <a name="quick-start"></a>
+<!-- cognis:install:start -->
+## Install
+
+`opsecscan` is source-available (not published to PyPI) — every method below installs
+straight from GitHub. Pick whichever you prefer; the one-line scripts auto-detect
+the best tool available on your machine.
+
+**One-liner (Linux / macOS):**
+```sh
+curl -fsSL https://raw.githubusercontent.com/cognis-digital/opsecscan/HEAD/install.sh | sh
+```
+
+**One-liner (Windows PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/cognis-digital/opsecscan/HEAD/install.ps1 | iex
+```
+
+**Or install manually — any one of:**
+```sh
+pipx install "git+https://github.com/cognis-digital/opsecscan.git"     # isolated (recommended)
+uv tool install "git+https://github.com/cognis-digital/opsecscan.git"  # uv
+pip install "git+https://github.com/cognis-digital/opsecscan.git"      # pip
+```
+
+**From source:**
+```sh
+git clone https://github.com/cognis-digital/opsecscan.git
+cd opsecscan && pip install .
+```
+
+Then run:
+```sh
+opsecscan --help
+```
+<!-- cognis:install:end -->
+
 ## Quick start
 
 ```bash
