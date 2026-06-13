@@ -20,6 +20,34 @@ pip install cognis-opsecscan
 opsecscan scan .            # → prioritized findings in seconds
 ```
 
+## Usage — step by step
+
+`opsecscan` scans documents and file metadata for OPSEC leaks (GPS EXIF,
+author/creator metadata, unit identifiers, PII). Console script: `opsecscan`.
+
+1. **Install** from a clone:
+   ```bash
+   pip install -e .
+   ```
+2. **Scan files or directories** — recurse with `-r`:
+   ```bash
+   opsecscan scan ./release -r
+   ```
+3. **Tune the threshold** — hide low-severity noise and choose what fails the run:
+   ```bash
+   opsecscan scan ./release -r --min-severity medium --fail-on high
+   ```
+4. **Read the output** — `--format json` emits per-file findings + a leak count:
+   ```bash
+   opsecscan scan ./release -r --format json | jq '.leaked, .results[].findings'
+   ```
+   Exit codes: `0` clean at/above `--fail-on`, `1` leak found, `2` usage/IO error.
+5. **Automate in CI** — block a release that leaks metadata:
+   ```yaml
+   - run: pip install -e .
+   - run: opsecscan scan ./public -r --fail-on medium
+   ```
+
 ## Contents
 
 - [Why opsecscan?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
