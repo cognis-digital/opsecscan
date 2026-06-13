@@ -75,13 +75,8 @@ $ opsecscan scan .
 
 ```mermaid
 flowchart LR
-  A[Input: file / dir / API] --> B[Collectors]
-  B --> C[Rules / Analyzers]
-  C --> D[Scorer]
-  D --> E{Reporters}
-  E --> F[Table]
-  E --> G[JSON / SARIF]
-  E --> H[MCP tool -. drives .-> AI agents]
+  IN[image / coordinates] --> P[opsecscan<br/>extract + geolocate]
+  P --> OUT[location estimate]
 ```
 
 <div align="right"><a href="#top">↑ back to top</a></div>
