@@ -34,3 +34,6 @@ opsecscan = "opsecscan.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["opsecscan"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
