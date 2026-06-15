@@ -272,6 +272,10 @@ def _scan_jpeg(data: bytes) -> list[Finding]:
         if i + 4 > n:
             break
         seg_len = struct.unpack(">H", data[i + 2:i + 4])[0]
+        # seg_len includes the 2-byte length field itself; a value < 2 is
+        # malformed and would cause an infinite loop — stop parsing.
+        if seg_len < 2:
+            break
         seg = data[i + 4:i + 2 + seg_len]
         if marker == 0xE1 and seg[:6] == b"Exif\x00\x00":
             findings.extend(_parse_tiff_for_gps(seg[6:]))
@@ -400,11 +404,15 @@ def _iter_files(paths: Iterable[str], recursive: bool) -> Iterable[str]:
     for p in paths:
         if os.path.isdir(p):
             if recursive:
-                for root, _dirs, files in os.walk(p):
+                for root, _dirs, files in os.walk(p, onerror=lambda _e: None):
                     for f in files:
                         yield os.path.join(root, f)
             else:
-                for f in sorted(os.listdir(p)):
+                try:
+                    entries = sorted(os.listdir(p))
+                except OSError:
+                    entries = []
+                for f in entries:
                     fp = os.path.join(p, f)
                     if os.path.isfile(fp):
                         yield fp

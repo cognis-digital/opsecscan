@@ -83,6 +83,18 @@ def _render_table(results, min_sev: Severity, fail_on: Severity) -> tuple[str, i
 
 
 def main(argv: Sequence[str] | None = None) -> int:
+    try:
+        return _main(argv)
+    except KeyboardInterrupt:
+        print("\ninterrupted", file=sys.stderr)
+        return 2
+    except Exception as exc:  # noqa: BLE001
+        print(f"opsecscan: unexpected error: {type(exc).__name__}: {exc}",
+              file=sys.stderr)
+        return 2
+
+
+def _main(argv: Sequence[str] | None = None) -> int:
     parser = _build_parser()
     args = parser.parse_args(argv)
 
@@ -92,8 +104,14 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     results = scan_paths(args.paths, recursive=args.recursive)
     if not results:
-        print("no files matched", file=sys.stderr)
+        print("opsecscan: no files matched", file=sys.stderr)
         return 2
+
+    # Warn about any I/O errors encountered during the scan.
+    errored = [r for r in results if r.error]
+    if errored:
+        for r in errored:
+            print(f"opsecscan: warning: {r.path}: {r.error}", file=sys.stderr)
 
     fail_on: Severity = args.fail_on
     leaked_files = sum(1 for r in results if r.max_severity >= fail_on)
@@ -112,7 +130,14 @@ def main(argv: Sequence[str] | None = None) -> int:
         text, leaked_files = _render_table(results, args.min_severity, fail_on)
         print(text)
 
-    return 1 if leaked_files else 0
+    if leaked_files:
+        return 1
+    # Return exit code 2 when every result was an I/O error (nothing was
+    # actually scanned).  This avoids a silent "all clear" when the tool
+    # never read any bytes.
+    if errored and len(errored) == len(results):
+        return 2
+    return 0
 
 
 if __name__ == "__main__":
