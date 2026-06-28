@@ -20,6 +20,64 @@ pip install cognis-opsecscan
 opsecscan scan .            # → prioritized findings in seconds
 ```
 
+
+<!-- cognis:example:start -->
+## 🔎 Example output
+
+Real, reproducible output from the tool — runs offline:
+
+```console
+$ opsecscan-emit --version
+opsecscan 0.1.0
+```
+
+```console
+$ opsecscan-emit --help
+usage: opsecscan [-h] [--version] {scan} ...
+
+Scan documents and file metadata for OPSEC leaks (GPS EXIF, author/creator
+metadata, unit identifiers, PII).
+
+positional arguments:
+  {scan}
+    scan      scan files or directories for OPSEC leaks
+
+options:
+  -h, --help  show this help message and exit
+  --version   show program's version number and exit
+```
+
+> Blocks above are real `opsecscan` output — reproduce them from a clone.
+
+**Sample result format** _(illustrative values — run on your own data for real findings):_
+
+```
+{
+"results": [
+    {
+        "id": "123456",
+        "title": "Potential SQL Injection",
+        "description": "The application is vulnerable to SQL injection attacks.",
+        "severity": "high",
+        "confidence": 0.8,
+        "mitre_attack_id": ["T1059"],
+        "cve_ids": ["CVE-2022-1234"]
+    },
+    {
+        "id": "789012",
+        "title": "Unvalidated Redirect",
+        "description": "The application is vulnerable to unvalidated redirect attacks.",
+        "severity": "medium",
+        "confidence": 0.6,
+        "mitre_attack_id": ["T1048"],
+        "cve_ids": ["CVE-2021-1111"]
+    }
+]
+}
+```
+
+<!-- cognis:example:end -->
+
 ## Usage — step by step
 
 `opsecscan` scans documents and file metadata for OPSEC leaks (GPS EXIF,

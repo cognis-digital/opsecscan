@@ -1,0 +1,3 @@
+$ opsecscan-emit --version
+
+opsecscan 0.1.0

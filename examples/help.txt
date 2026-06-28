@@ -1,0 +1,14 @@
+$ opsecscan-emit --help
+
+usage: opsecscan [-h] [--version] {scan} ...
+
+Scan documents and file metadata for OPSEC leaks (GPS EXIF, author/creator
+metadata, unit identifiers, PII).
+
+positional arguments:
+  {scan}
+    scan      scan files or directories for OPSEC leaks
+
+options:
+  -h, --help  show this help message and exit
+  --version   show program's version number and exit
